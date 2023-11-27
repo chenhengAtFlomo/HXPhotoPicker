@@ -130,6 +130,15 @@ open class PhotoPickerListViewController:
         swipeSelectLastLocalPoint = panGR.location(in: view)
         switch panGR.state {
         case .began:
+            for cell in self.collectionView.visibleCells {
+                if cell.frame.contains(localPoint), let cell = cell as? PhotoPickerSelectableViewCell {
+                    if cell.selectControl.frame.contains(panGR.location(in: cell)) {
+                        panGR.isEnabled = false
+                        panGR.isEnabled = true
+                        return
+                    }
+                }
+            }
             beganPanGestureRecognizer(panGR: panGR, localPoint: localPoint)
         case .changed:
             changedPanGestureRecognizer(panGR: panGR, localPoint: localPoint)
@@ -184,9 +193,10 @@ open class PhotoPickerListViewController:
                 section: 0
             )
         }
-        collectionView.insertItems(
-            at: [indexPath]
-        )
+        collectionView.reloadData() //By tom fix crash in release build after camera take new photo
+//        collectionView.insertItems(
+//            at: [indexPath]
+//        )
         collectionView.scrollToItem(
             at: indexPath,
             at: .bottom,
