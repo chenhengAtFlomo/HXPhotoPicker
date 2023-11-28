@@ -512,6 +512,7 @@ extension PhotoToolBarView: PhotoPreviewListViewDataSource {
     }
     
     public func configPreviewList(_ assets: [PhotoAsset], page: Int) {
+        if !isShowPreviewList { return }
         previewAssets = assets
         previewListView.configure(numberOfPages: assets.count, currentPage: page)
     }
