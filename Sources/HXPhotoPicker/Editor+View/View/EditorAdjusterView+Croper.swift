@@ -241,7 +241,7 @@ extension EditorAdjusterView {
                 }
                 self.compressImageData(
                     data,
-                    compressionQuality: 0.3
+                    compressionQuality: 1
                 ) { thumbData in
                     if let thumbData = thumbData,
                        let thumbnailImage = UIImage(data: thumbData) {

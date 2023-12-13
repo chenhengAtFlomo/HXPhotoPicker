@@ -147,7 +147,7 @@ extension EditorViewController {
                 }
                 PhotoTools.compressImageData(
                     data,
-                    compressionQuality: 0.3,
+                    compressionQuality: 1,
                     queueLabel: "HXPhotoPicker.editor.CompressThumbImageFilterProcessingQueue"
                 ) { thumbData in
                     if let thumbData = thumbData,
