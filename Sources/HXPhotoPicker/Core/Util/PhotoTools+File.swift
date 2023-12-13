@@ -229,7 +229,7 @@ public extension PhotoTools {
         serialQueue.async {
             autoreleasepool {
                 if isHEIC {
-                    guard let data = image.jpegData(compressionQuality: 0.5) else {
+                    guard let data = image.jpegData(compressionQuality: 1) else {
                         completion(nil)
                         return
                     }
