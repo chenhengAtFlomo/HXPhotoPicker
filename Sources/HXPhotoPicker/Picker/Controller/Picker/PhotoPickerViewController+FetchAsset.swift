@@ -49,12 +49,12 @@ extension PhotoPickerViewController {
                 addFilter = false
             }
         }
-        if listView.filterOptions != .any {
+        if listView != nil, listView.filterOptions != .any {
             listView.filterOptions = .any
         }
         initNavItems(addFilter)
         pickerController.fetchData.fetchPhotoAssets(assetCollection: assetCollection) { [weak self] result in
-            guard let self = self else { return }
+            guard let self = self, self.listView != nil else { return }
             self.listView.assetResult = result
             self.scrollToAppropriatePlace(photoAsset: result.selectedAsset)
             if self.showLoading {
@@ -101,7 +101,7 @@ extension PhotoPickerViewController {
     }
     
     func reloadAlbumData() {
-        if pickerConfig.albumShowMode.isPopView, !pickerController.splitType.isSplit {
+        if pickerConfig.albumShowMode.isPopView, !pickerController.splitType.isSplit, albumView != nil {
             albumView.selectedAssetCollection = assetCollection
             albumView.reloadData()
         }

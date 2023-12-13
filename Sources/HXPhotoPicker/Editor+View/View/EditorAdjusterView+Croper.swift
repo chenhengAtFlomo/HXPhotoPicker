@@ -373,16 +373,20 @@ extension EditorAdjusterView {
     }
     
     fileprivate func getCompressionQuality(_ dataCount: CGFloat) -> CGFloat? {
-        if dataCount > 30000000 {
-            return 25000000 / dataCount
-        }else if dataCount > 15000000 {
-            return 10000000 / dataCount
-        }else if dataCount > 10000000 {
-            return 6000000 / dataCount
-        }else if dataCount > 6000000 {
-            return 4500000 / dataCount
-        }else if dataCount > 3000000 {
-            return 3000000 / dataCount
+        if dataCount > 30000000000 {
+            if dataCount > 30000000 {
+                return 25000000 / dataCount
+            }else if dataCount > 15000000 {
+                return 10000000 / dataCount
+            }else if dataCount > 10000000 {
+                return 6000000 / dataCount
+            }else if dataCount > 6000000 {
+                return 4500000 / dataCount
+            }else if dataCount > 3000000 {
+                return 3000000 / dataCount
+            }
+        } else {
+            return 1
         }
         return nil
     }
