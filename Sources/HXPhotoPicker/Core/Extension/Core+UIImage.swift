@@ -117,7 +117,7 @@ extension UIImage {
         return nil
     }
     
-    func normalizedImage() -> UIImage? {
+    public func normalizedImage() -> UIImage? {
         if imageOrientation == .up {
             return self
         }
