@@ -119,6 +119,13 @@ public class PhotoPreviewViewController: PhotoBaseViewController {
             navHeight = 0
         }
         navBgView?.frame = .init(x: 0, y: 0, width: view.width, height: navHeight)
+        if let cell = self.getCell(
+            for: self.currentPreviewIndex
+        ),  cell.width != collectionView.width, !self.isTransitioning {
+            DispatchQueue.main.async {
+                self.reloadCell(for: self.currentPreviewIndex)
+            }
+        }
     }
     
     public override func deviceOrientationWillChanged(notify: Notification) {
