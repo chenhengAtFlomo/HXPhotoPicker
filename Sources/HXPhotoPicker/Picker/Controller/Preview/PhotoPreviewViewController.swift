@@ -392,6 +392,9 @@ extension PhotoPreviewViewController {
         if assetCount == 0 {
             return nil
         }
+        if collectionView == nil {
+            return nil
+        }
         let cell = collectionView.cellForItem(
             at: IndexPath(
                 item: item,
